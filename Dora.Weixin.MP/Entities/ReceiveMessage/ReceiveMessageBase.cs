@@ -1,25 +1,22 @@
-﻿using Dora.Weixin.Entities;
-
-namespace Dora.Weixin.MP.Entities.ReceiveMessage
+﻿namespace Dora.Weixin.MP.Entities.ReceiveMessage
 {
-    public abstract class ReceiveMessageBase : MessageBase
+    public interface IReceiveMessageBase : Weixin.Entities.IReceiveMessageBase
     {
-        /// <summary>
-        /// 消息类型
-        /// </summary>
+        ReceiveMessageType MsgType { get; }
+        string Encrypt { get; set; }
+    }
+
+    public class ReceiveMessageBase : Weixin.Entities.ReceiveMessageBase, IReceiveMessageBase
+    {
         public virtual ReceiveMessageType MsgType
         {
             get { return ReceiveMessageType.Text; }
         }
 
-        /// <summary>
-        /// 好像没用
-        /// </summary>
-        public string Encrypt { get; set; }
-
-        /// <summary>
-        /// 消息id，64位整型
-        /// </summary>
-        public long MsgId { get; set; }
+        public virtual string Encrypt
+        {
+            get;
+            set;
+        }
     }
 }

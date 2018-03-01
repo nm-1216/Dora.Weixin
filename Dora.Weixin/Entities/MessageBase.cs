@@ -2,27 +2,46 @@
 {
     using System;
 
-    public abstract class MessageBase
+    /// <summary>
+    /// 消息的接口
+    /// </summary>
+    public interface IMessageBase
     {
         /// <summary>
         /// 接收人
         /// </summary>
-        public string ToUserName { get; set; }
+        string ToUserName { get; set; }
 
         /// <summary>
         /// 发送人
         /// </summary>
-        public string FromUserName { get; set; }
+        string FromUserName { get; set; }
+
+        /// <summary>
+        /// 消息创建时间
+        /// </summary>
+        DateTime CreateTime { get; set; }
+    }
+
+    /// <summary>
+    /// 消息类
+    /// </summary>
+    public abstract class MessageBase : IMessageBase
+    {
+        /// <summary>
+        /// 接收人
+        /// </summary>
+        public virtual string ToUserName { get; set; }
+
+        /// <summary>
+        /// 发送人
+        /// </summary>
+        public virtual string FromUserName { get; set; }
 
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
-
-        //public override string ToString()
-        //{
-        //    return base.ToString();
-        //}
+        public virtual DateTime CreateTime { get; set; }
     }
 
 }
