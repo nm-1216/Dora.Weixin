@@ -2,7 +2,7 @@
 {
     public interface IReplyMessageBase : Weixin.Entities.IReplyMessageBase
     {
-        ReceiveMessageType MsgType { get; }
+        ReplyMsgType MsgType { get; }
     }
 
     public abstract class ReplyMessageBase : Weixin.Entities.ReplyMessageBase, IReplyMessageBase
@@ -10,9 +10,9 @@
         /// <summary>
         /// 消息类型
         /// </summary>
-        public virtual ReceiveMessageType MsgType
+        public virtual ReplyMsgType MsgType
         {
-            get { return ReceiveMessageType.Text; }
+            get { return ReplyMsgType.Text; }
         }
     }
 }
